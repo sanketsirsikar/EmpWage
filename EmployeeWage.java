@@ -13,15 +13,19 @@ public class EmployeeWage {
         int dailyWage =0;
 
         int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-        if (empCheck == IS_FUUL_TIME) {
-            System.out.println("Employee  FULL TIME ");
-            dailyWage=WAGE_PER_HOUR*FULL_TIME_HOUR;
-        }else if (empCheck==PART_TIME_HOUR){
-            System.out.println("Employee PART TIME");
-            dailyWage=WAGE_PER_HOUR*PART_TIME_HOUR;
-        }else {
-            System.out.println("Employee is Absent");
+        switch (empCheck){
+            case IS_FUUL_TIME:
+                System.out.println("Employee  FULL TIME ");
+                dailyWage=WAGE_PER_HOUR*FULL_TIME_HOUR;
+                break;
+            case IS_PART_TIME:
+                System.out.println("Employee PART TIME");
+                dailyWage=WAGE_PER_HOUR*PART_TIME_HOUR;
+                break;
+            default:
+                System.out.println("Employee is Absent");
         }
+
         System.out.println("Daily Wage ==>"+dailyWage);
     }
 }

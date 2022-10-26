@@ -6,12 +6,11 @@ public class EmployeeWage {
     static final int WAGE_PER_HOUR = 20;
     static final int FULL_TIME_HOUR = 8;
     static final int PART_TIME_HOUR = 4;
-    static final int IS_FUUL_TIME = 2;
+    static final int IS_FULL_TIME = 2;
     static final int IS_PART_TIME = 1;
 
 
-    public static void computeEmployeeWage() {
-
+    public static int computeEmployeeWage(String COMPONY_NAME, int WAGE_PER_HOUR, int WORKING_DAYS_PER_MONTH, int TOTAL_WORKING_HOURS) {
 
         int day = 1;
         int totalworkinghours = 0;
@@ -21,7 +20,7 @@ public class EmployeeWage {
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
             switch (empCheck) {
-                case IS_FUUL_TIME:
+                case IS_FULL_TIME:
                     System.out.println("Employee  FULL TIME ");
                     dailyWage = WAGE_PER_HOUR * FULL_TIME_HOUR;
                     totalworkinghours = totalworkinghours + FULL_TIME_HOUR;
@@ -40,13 +39,14 @@ public class EmployeeWage {
         }
         System.out.println("Total Wage ==>" + totalwage);
         System.out.println("Total Working Hours ==> " + totalworkinghours);
+        return totalwage;
 
     }
 
     public static void main(String[] args) {
-        System.out.println("Employee Wage Problem");
-        computeEmployeeWage();
-
+        System.out.println("start to the Employee Wages");
+        computeEmployeeWage("SAMSUNG",10,4,15);
+        computeEmployeeWage("LENOVO",15,5,20);
     }
 }
 

@@ -1,17 +1,26 @@
 package Com.BridgeLabz.EmployeeWage;
-
 public class EmployeeWage {
-    static final int TOTAL_WORKING_HOURS = 100;
-    static final int WORKING_DAYS_PER_MONTH = 20;
-    static final int WAGE_PER_HOUR = 20;
     static final int FULL_TIME_HOUR = 8;
     static final int PART_TIME_HOUR = 4;
     static final int IS_FULL_TIME = 2;
     static final int IS_PART_TIME = 1;
 
 
-    public static int computeEmployeeWage(String COMPONY_NAME, int WAGE_PER_HOUR, int WORKING_DAYS_PER_MONTH, int TOTAL_WORKING_HOURS) {
+    private final String COMPONY_NAME;
+    private final int TOTAL_WORKING_HOURS;
+    private final int WORKING_DAYS_PER_MONTH;
+    private final int WAGE_PER_HOUR;
+    private int total_wage;
 
+
+    public EmployeeWage(String COMPONY_NAME, int WAGE_PER_HOUR, int WORKING_DAYS_PER_MONTH, int TOTAL_WORKING_HOURS) {
+        this.COMPONY_NAME = COMPONY_NAME;
+        this.WAGE_PER_HOUR = WAGE_PER_HOUR;
+        this.WORKING_DAYS_PER_MONTH = WORKING_DAYS_PER_MONTH;
+        this.TOTAL_WORKING_HOURS = TOTAL_WORKING_HOURS;
+    }
+
+    public int computeEmployeeWage() {
         int day = 1;
         int totalworkinghours = 0;
         int totalwage = 0;
@@ -21,32 +30,46 @@ public class EmployeeWage {
 
             switch (empCheck) {
                 case IS_FULL_TIME:
-                    System.out.println("Employee  FULL TIME ");
+                    System.out.println("Employee Full Time");
                     dailyWage = WAGE_PER_HOUR * FULL_TIME_HOUR;
                     totalworkinghours = totalworkinghours + FULL_TIME_HOUR;
                     break;
                 case IS_PART_TIME:
-                    System.out.println("Employee PART TIME");
+                    System.out.println("Employee Part Time");
                     dailyWage = WAGE_PER_HOUR * PART_TIME_HOUR;
                     totalworkinghours = totalworkinghours + PART_TIME_HOUR;
                     break;
                 default:
-                    System.out.println("Employee is Absent");
+                    System.out.println("Employee Absent");
             }
             totalwage = totalwage + dailyWage;
-            System.out.println("Daily Wage ==>" + day + " ==> " + dailyWage);
+            System.out.println("Daily Wage => " + day + " => " + dailyWage);
             day++;
         }
-        System.out.println("Total Wage ==>" + totalwage);
-        System.out.println("Total Working Hours ==> " + totalworkinghours);
+        System.out.println("Total Wage => " + totalwage);
+        System.out.println("Total Working Hours => " + totalworkinghours);
         return totalwage;
-
     }
 
+    @Override
+    public String toString() {
+        return "EmployeeWage{" +
+                "COMPONY_NAME='" + COMPONY_NAME + '\'' +
+                ", TOTAL_WORKING_HOURS=" + TOTAL_WORKING_HOURS +
+                ", WORKING_DAYS_PER_MONTH=" + WORKING_DAYS_PER_MONTH +
+                ", WAGE_PER_HOUR=" + WAGE_PER_HOUR +
+                ", total_wage=" + total_wage +
+                '}';
+    }
     public static void main(String[] args) {
-        System.out.println("start to the Employee Wages");
-        computeEmployeeWage("SAMSUNG",10,4,15);
-        computeEmployeeWage("LENOVO",15,5,20);
+        System.out.println("Start to the Employee Wages");
+        EmployeeWage Mindtree = new EmployeeWage("Mindtree",20,1,10);
+        EmployeeWage concentric = new EmployeeWage("concentric",15,2,10);
+        Mindtree.computeEmployeeWage();
+        System.out.println(Mindtree);
+        concentric.computeEmployeeWage();
+        System.out.println(concentric);
+
     }
 }
 
